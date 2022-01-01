@@ -33,20 +33,24 @@ public class TankFrame extends Frame {
     }
 
     class MyKeylistener extends KeyAdapter{
+        Boolean BL = false;
+        Boolean BR = false;
+        Boolean BU = false;
+        Boolean BD = false;
         @Override
         public void keyPressed(KeyEvent e) {
             switch (e.getKeyCode()){
                 case KeyEvent.VK_LEFT:
-                    x -= length;
+                    BL = true;
                     break;
                 case KeyEvent.VK_RIGHT:
-                    x += length;
+                    BR = true;
                     break;
                 case KeyEvent.VK_UP:
-                    y -= length;
+                    BU = true;
                     break;
                 case KeyEvent.VK_DOWN:
-                    y += length;
+                    BD = true;
                     break;
             }
             System.out.println("key on");
@@ -54,8 +58,23 @@ public class TankFrame extends Frame {
 
         @Override
         public void keyReleased(KeyEvent e) {
+            switch (e.getKeyCode()){
+                case KeyEvent.VK_LEFT:
+                    BL = false;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    BR = false;
+                    break;
+                case KeyEvent.VK_UP:
+                    BU = false;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    BD = false;
+                    break;
+            }
             System.out.println("key up");
         }
+
     }
 
 }

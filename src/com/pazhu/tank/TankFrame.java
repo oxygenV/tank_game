@@ -1,9 +1,12 @@
 package com.pazhu.tank;
 
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+@SuppressWarnings("all")
 public class TankFrame extends Frame {
 
     int x = 20,y=20;
@@ -13,6 +16,8 @@ public class TankFrame extends Frame {
       setVisible(true);
       setResizable(false);
       setTitle("tank game");
+
+      addKeyListener(new MyKeylistener());
       addWindowListener(new WindowAdapter() {
           @Override
           public void windowClosing(WindowEvent e) {
@@ -23,9 +28,24 @@ public class TankFrame extends Frame {
 
     @Override
     public void paint(Graphics g) {
-          g.fillRect(x,y,35,35);
-          x+=5;
-          y+=5;
+        System.out.println("paint ... ");
+        g.fillRect(x,y,35,35);
+        // x += 15;
+        // y += 15;
+    }
+
+    class MyKeylistener extends KeyAdapter{
+        @Override
+        public void keyPressed(KeyEvent e) {
+            x += 20;
+            repaint();
+            System.out.println("key on");
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            System.out.println("key up");
+        }
     }
 
 }

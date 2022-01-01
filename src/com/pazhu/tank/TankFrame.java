@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
 @SuppressWarnings("all")
 public class TankFrame extends Frame {
 
-    int x = 20,y=20;
+    int x = 20, y = 20, length = 10;
 
     public TankFrame() {
       setSize(800,600);
@@ -30,15 +30,25 @@ public class TankFrame extends Frame {
     public void paint(Graphics g) {
         System.out.println("paint ... ");
         g.fillRect(x,y,35,35);
-         x += 15;
-        // y += 15;
     }
 
     class MyKeylistener extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
-//            x += 20;
-//            repaint();
+            switch (e.getKeyCode()){
+                case KeyEvent.VK_LEFT:
+                    x -= length;
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    x += length;
+                    break;
+                case KeyEvent.VK_UP:
+                    y -= length;
+                    break;
+                case KeyEvent.VK_DOWN:
+                    y += length;
+                    break;
+            }
             System.out.println("key on");
         }
 
